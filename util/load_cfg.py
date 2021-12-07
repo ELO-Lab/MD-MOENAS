@@ -12,7 +12,7 @@ from pprint import pformat
 import datetime
 
 
-def load_cfg(path, seed, console_log=True):
+def load_cfg(path, seed, console_log=True, callback=None, **kwargs):
     cfg, _ = load_yaml_cfg(path)
     cfg.exp_name = getattr(
         cfg,
@@ -21,6 +21,9 @@ def load_cfg(path, seed, console_log=True):
             datetime.datetime.now().strftime("%Y%m%d-%H%M")
         )
     )
+
+    if callback:
+        cfg = callback(cfg, **kwargs)
 
     cfg.exp_name += '_S{:0>2d}'.format(seed)
     cfg.summary_dir = os.path.join('exps', cfg.exp_name, 'summaries/')

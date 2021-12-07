@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/search.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--n_evals", "3000", 
+                "--console_log",
+                "--pop_size", "50", 
+                "--loops_if_rand", "-1", 
+                "-sw", 
+                "--use_archive",
+                "--eval_igd",
+                "--search_space=tss",                
+                "--datasets", "cifar10",
+                "--datasets", "cifar100",
+                "--efficiency=latency",
+                "--epoch", "24",
+                "--eval_dts", "ImageNet16-120"
+            ]
+        }
+    ]
+}
